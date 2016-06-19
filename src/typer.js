@@ -1,5 +1,5 @@
 /*
-TyperJS Plugin v1.0.0
+TyperJS Plugin v1.0.1
 (c) 2016 123Apps. (http://123apps.org)
 */
 (function ($) {
@@ -22,7 +22,7 @@ TyperJS Plugin v1.0.0
         charsLength,
         charIndex = 0,
         stringIndex = 0,
-        typedElements = "<span class=\"typed\"></span><span class=\"typed_cursor\">&#x7c;</span>";
+        typerElements = "<span class=\"typed\"></span><span class=\"typed_cursor\">&#x7c;</span>";
 
     function type(strings) {
       if (stringIndex < strings.length) {
@@ -86,7 +86,7 @@ TyperJS Plugin v1.0.0
 
     return this.each(function() {
       // add typed elements
-      $(this).append(typedElements);
+      $(this).append(typerElements);
 
       // blink cursor
       blinkCursor();
