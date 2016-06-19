@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>Typer.js Example</title>
+
+    <style type="text/css">
+        body {
+            width: 700px;
+            margin: 20 auto;
+            font-size: 30px;
+            font-weight: bold;
+            font-family: arial;
+            text-align: center;
+        }
+
+        .typed {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    Typer.js 
+    <span id="example"></span>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../dist/typer.min.js"></script>
+
+    <script type="text/javascript">
+        $("#example").typer({
+            strings: [
+                "is another great free jQuery plugin",
+                "animates typing string",
+                "is created by 123Apps.org"
+            ]
+        });
+    </script>
+</body>
+</html>
