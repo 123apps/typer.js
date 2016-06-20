@@ -1,7 +1,7 @@
 {
     "name": "typer.js",
     "version": "1.0.2",
-    "description": "Typer.js is another great free jQuery plugin, which animates typing string",
+    "description": "Typer.js is a great free jQuery plugin, which animates typing string",
     "repository": {
         "type": "git",
         "url": "https://github.com/123apps/typer.js.git"
