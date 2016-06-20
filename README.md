@@ -1,5 +1,5 @@
 ## Typer.js
-is a free jQuery plugin, which animates typing string.
+is a great free jQuery plugin, which animates typing string.
 
 ## Demo
 Go to [demo](http://123apps.org/typer.js) page.
