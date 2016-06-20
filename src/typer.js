@@ -1,5 +1,5 @@
 /*
-TyperJS Plugin v1.0.2
+Typer.js Plugin v1.1.0
 (c) 2016 123Apps. (http://123apps.org)
 */
 (function ($) {
@@ -13,8 +13,11 @@ TyperJS Plugin v1.0.2
       backspaceDelay: 800,
       repeatDelay: 1000,
       repeat: true,
+      autoStart: true,
+      startDelay: 100,
+      useCursor: true,
       strings: [
-        "TyperJS plugin"
+        "Typer.js plugin"
       ]
     }, options);
 
@@ -22,7 +25,8 @@ TyperJS Plugin v1.0.2
         charsLength,
         charIndex = 0,
         stringIndex = 0,
-        typerElements = "<span class=\"typed\"></span><span class=\"typed_cursor\">&#x7c;</span>";
+        typedElement = "<span class=\"typed\"></span>",
+        typedCursorElement = "<span class=\"typed_cursor\">&#x7c;</span>";
 
     function type(strings) {
       if (stringIndex < strings.length) {
@@ -85,14 +89,24 @@ TyperJS Plugin v1.0.2
     }
 
     return this.each(function() {
-      // add typed elements
-      $(this).append(typerElements);
+      if (settings.autoStart) {
+        var t = $(this);
 
-      // blink cursor
-      blinkCursor();
+        // add typer elements
+        t.append(typedElement);
 
-      // type all strings
-      type(settings.strings);
+        if (settings.useCursor) {
+          t.append(typedCursorElement);
+        }
+
+        // blink cursor
+        blinkCursor();
+
+        // type all strings
+        setTimeout(function() {
+          type(settings.strings);
+        }, settings.startDelay);
+      }
     });
   };
 }(jQuery));
