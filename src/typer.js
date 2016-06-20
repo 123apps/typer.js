@@ -1,5 +1,5 @@
 /*
-Typer.js Plugin v1.1.0
+Typer.js Plugin v1.1.1
 (c) 2016 123Apps. (http://123apps.org)
 */
 (function ($) {
@@ -97,10 +97,10 @@ Typer.js Plugin v1.1.0
 
         if (settings.useCursor) {
           t.append(typedCursorElement);
-        }
 
-        // blink cursor
-        blinkCursor();
+          // blink cursor
+          blinkCursor();
+        }
 
         // type all strings
         setTimeout(function() {
