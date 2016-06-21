@@ -1,5 +1,5 @@
 /*
-Typer.js Plugin v1.2.1
+Typer.js Plugin v1.2.0
 (c) 2016 123Apps. (http://123apps.org)
 */
 (function ($) {
