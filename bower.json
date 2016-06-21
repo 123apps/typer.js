@@ -6,7 +6,7 @@
     "authors": [
         "123Apps <http://123apps.org@gmail.com>"
     ],
-    "description": "Typer.js is a great free jQuery plugin, which animates typing string",
+    "description": "Typer.js is a great free jQuery plugin that animates typing string",
     "main": "dist/typer.min.js",
     "keywords": [
         "typer.js",
