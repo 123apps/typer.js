@@ -1,5 +1,5 @@
 /*
-Typer.js Plugin v1.1.1
+Typer.js Plugin v1.2.1
 (c) 2016 123Apps. (http://123apps.org)
 */
 (function ($) {
@@ -21,31 +21,31 @@ Typer.js Plugin v1.1.1
       ]
     }, options);
 
+    // global variables
     var chars,
         charsLength,
         charIndex = 0,
         stringIndex = 0,
-        typedElement = "<span class=\"typed\"></span>",
-        typedCursorElement = "<span class=\"typed_cursor\">&#x7c;</span>";
+        typerIndex = 0;
 
-    function type(strings) {
+    function type(typedElement, strings) {
       if (stringIndex < strings.length) {
         chars = strings[stringIndex].split("");
         charsLength = chars.length;
 
         setTimeout(function() {
-          $(".typed").append(chars[charIndex]);
+          typedElement.append(chars[charIndex]);
           charIndex++;
           if (charIndex < charsLength) {
-            type(strings);
+            type(typedElement, strings);
           } else {
             charIndex = 0;
             stringIndex++;
 
             // type next string and backspace what is typed
             setTimeout(function() {
-              backspace(function() {
-                type(strings);
+              backspace(typedElement, function() {
+                type(typedElement, strings);
               });
             }, settings.backspaceDelay);
           }
@@ -54,26 +54,25 @@ Typer.js Plugin v1.1.1
         // all strings are typed
         // repeat
         if (settings.repeat) {
-          repeat(strings);
+          repeat(typedElement, strings);
         }
       }
     }
 
     // repeat typing
-    function repeat(strings) {
+    function repeat(typedElement, strings) {
       stringIndex = 0;
       setTimeout(function() {
-        type(strings);
+        type(typedElement, strings);
       }, settings.repeatDelay);
     }
 
     // backspace what is typed
-    function backspace(callback) {
+    function backspace(typedElement, callback) {
       setTimeout(function() {
-        var typedEl = $(".typed");
-        typedEl.text(typedEl.text().slice(0, -1));
-        if (0 < typedEl.text().length) {
-          backspace(callback);
+        typedElement.text(typedElement.text().slice(0, -1));
+        if (0 < typedElement.text().length) {
+          backspace(typedElement, callback);
         } else {
           if ("function" === typeof callback) {
             callback();
@@ -82,29 +81,35 @@ Typer.js Plugin v1.1.1
       }, settings.speedBackspace);
     }
 
-    function blinkCursor() {
+    function blinkCursor(cursorElement) {
       setInterval(function() {
-        $(".typed_cursor").fadeOut(400).fadeIn(400);
+        cursorElement.fadeOut(400).fadeIn(400);
       }, 900);
     }
 
-    return this.each(function() {
-      if (settings.autoStart) {
-        var t = $(this);
 
-        // add typer elements
-        t.append(typedElement);
+    return this.each(function() {
+      var t = $(this),
+          typedElement,
+          cursorElement;
+
+      if (settings.autoStart) {
+        // add typed element
+        t.append("<span class=\"typed\"></span>");
 
         if (settings.useCursor) {
-          t.append(typedCursorElement);
+          // add cursor element
+          t.append("<span class=\"typed_cursor\">&#x7c;</span>");
 
           // blink cursor
-          blinkCursor();
+          cursorElement = t.children(".typed_cursor");
+          blinkCursor(cursorElement);
         }
 
         // type all strings
+        typedElement = t.children(".typed");
         setTimeout(function() {
-          type(settings.strings);
+          type(typedElement, settings.strings);
         }, settings.startDelay);
       }
     });
