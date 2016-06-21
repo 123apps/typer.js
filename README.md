@@ -36,4 +36,4 @@ Typer.js
 ```
 
 ## License
-* MIT License
+* MIT
