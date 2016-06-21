@@ -8,8 +8,8 @@ Typer.js Plugin v1.2.0
   $.fn.typer = function(options) {
     // merge options
     var settings = $.extend({
-      speedType: 60,
-      speedBackspace: 20,
+      typeSpeed: 60,
+      backspaceSpeed: 20,
       backspaceDelay: 800,
       repeatDelay: 1000,
       repeat: true,
@@ -49,7 +49,7 @@ Typer.js Plugin v1.2.0
               });
             }, settings.backspaceDelay);
           }
-        }, settings.speedType);
+        }, settings.typeSpeed);
       } else {
         // all strings are typed
         // repeat
@@ -78,7 +78,7 @@ Typer.js Plugin v1.2.0
             callback();
           }
         }
-      }, settings.speedBackspace);
+      }, settings.backspaceSpeed);
     }
 
     function blinkCursor(cursorElement) {
