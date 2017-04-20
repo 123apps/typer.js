@@ -13,7 +13,7 @@ Go to [demo](http://123apps.org/typer.js) page.
 bower install typer.js --save
 
 # npm
-npm install typer.js
+npm install typer.js --save
 ```
 
 ## Usage
